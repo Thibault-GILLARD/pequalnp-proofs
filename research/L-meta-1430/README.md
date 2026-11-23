@@ -15,7 +15,9 @@ An exhaustive SAT search found the same minimum circuit size with AND and OR gat
 | `0xeae8e888` | 8 | 8 |
 | `0xeae8e8c0` | 8 | 8 |
 
-The desk recorded the outcome as `statement_seems_false`. The search result awaits formalization in Lean.
+The desk recorded the search outcome as `statement_seems_false`. The project's checker accepted the formal proof of the companion statement `L-meta-1429` in a local run. The proof uses the live-wire search developed for `L-meta-1007` and adapted by `ljste` for shard 16. [Lean proof in this fork](https://github.com/Thibault-GILLARD/pequalnp-proofs/blob/b5d4060032bac00a3f3f017a68038b23be8bdd2f/lean/PEqualNP/Outside/L_meta_1429.lean) · [Shard 16 proof](https://github.com/brilliant-hq/pequalnp-proofs/pull/2918)
+
+The upstream project merged K-Yamada-2002's proof of the companion statement. [Upstream pull request](https://github.com/brilliant-hq/pequalnp-proofs/pull/2921)
 
 ## Search
 
