@@ -288,7 +288,7 @@ namespace DiagonalBounds
 
 open PEqualNP.CircuitLowerBounds
 
-private def readWire (C : Circuit) {n : ℕ} (z : Fin n → Bool) (index : ℕ) : Bool :=
+def readWire (C : Circuit) {n : ℕ} (z : Fin n → Bool) (index : ℕ) : Bool :=
   (C.wires (List.ofFn z)).getD index false
 
 private theorem originFromChange (C : Circuit) {n : ℕ} (roots : Finset ℕ)
@@ -310,12 +310,12 @@ private theorem originFromChange (C : Circuit) {n : ℕ} (roots : Finset ℕ)
   exact WireBudget.circuitValuesCongr C (List.ofFn x) (List.ofFn y)
     (by simp) (by simp) roots originsAgree wire membership
 
-private def singletonInput {n : ℕ} (i : Fin n) (z : Fin n) : Bool := decide (z = i)
+def singletonInput {n : ℕ} (i : Fin n) (z : Fin n) : Bool := decide (z = i)
 
-private def pairInput {N : ℕ} (p l : Fin N) (z : Fin (N + N)) : Bool :=
+def pairInput {N : ℕ} (p l : Fin N) (z : Fin (N + N)) : Bool :=
   singletonInput (Fin.castAdd N p) z || singletonInput (Fin.natAdd N l) z
 
-private def productAt {J n : ℕ} (C : Circuit) (fa fb : Fin J → ℕ) (j : Fin J)
+def productAt {J n : ℕ} (C : Circuit) (fa fb : Fin J → ℕ) (j : Fin J)
     (z : Fin n → Bool) : Prop := readWire C z (fa j) = true ∧ readWire C z (fb j) = true
 
 private def roots {J : ℕ} (fa fb : Fin J → ℕ) : Finset ℕ :=
