@@ -15,6 +15,10 @@ The file also proves a pivot observation. If one monotone factor fires on a sing
 
 For the unrestricted statement, a remaining case is a family of products whose two factors are individually unsound. The existing degree-two bound applies to the products with an individually sound factor, by selecting one such factor per product. [Checked degree-two bound](https://pequalnp.com/lemma#L-meta-1382)
 
+For each line `l`, consider the assignment that sets `l` and every point outside `l`. It contains no incidence, so every sound product has a factor that rejects it. `DiagonalBounds.oneFactorRejectsNonneighbors` proves this observation. When a diagonal pair is counted, this factor accepts the pair and rejects the assignment with only its point set.
+
+A sufficient remaining estimate is `200 * (C.size + K) + 16 * N` for a collection of `K` degree-two wires. Count the incidences for which some wire accepts the pair, rejects its point-only assignment, and rejects the assignment containing its line and all points outside that line. Taking `K = 2 * J` would give the posted bound. The estimate must account for shared gates across the wires and lines.
+
 ## Check
 
 Run from the repository's `lean` directory with the pinned Lean toolchain and Mathlib cache.

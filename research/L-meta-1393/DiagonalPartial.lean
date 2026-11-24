@@ -69,6 +69,18 @@ theorem uniqueBadPointWithTwoPivots {I : P → L → Prop} {A B : Set P → Set 
     badPairPointOnPivot upA upB sound onFirst acceptsQ nonedgeQ,
     badPairPointOnPivot upA upB sound onSecond acceptsQ nonedgeQ⟩
 
+theorem oneFactorRejectsNonneighbors {I : P → L → Prop} {A B : Set P → Set L → Prop}
+    (sound : ∀ points lines, A points lines → B points lines →
+      containsIncidence I points lines) (l : L) :
+    ¬ A {p | ¬ I p l} {l} ∨ ¬ B {p | ¬ I p l} {l} := by
+  classical
+  by_cases rejectsA : ¬ A {p | ¬ I p l} {l}
+  · exact Or.inl rejectsA
+  · refine Or.inr fun acceptsB => ?_
+    obtain ⟨p, hp, l', hl', incident⟩ := sound _ _ (not_not.mp rejectsA) acceptsB
+    have eq : l' = l := Set.mem_singleton_iff.mp hl'
+    exact hp (eq ▸ incident)
+
 open scoped BigOperators
 
 theorem orderedPairBound [DecidableEq P] [DecidableEq L]
